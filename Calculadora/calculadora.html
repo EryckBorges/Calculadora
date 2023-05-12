@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body{
+            overflow: hidden;
+            background:black;
+            height:100vh;
+        }
+        #result{
+            overflow-x: auto;
+            overflow-y:hidden ;
+            opacity:0.85;
+            text-align:right;
+            width:92vw;
+            height:22vh;
+            font-size:60pt;
+            margin:5px;
+            margin-bottom:8px;
+            color:white;
+        }
+        button{
+            font-size:18pt;
+            font-weight: 500;
+            cursor:pointer;
+            color:#fff;
+            width:18vw;
+            height:11.5vh;
+            border:none;
+            background:gray;
+            text-align:center;
+            border-radius: 30px;
+            margin:6px;
+            margin-left:50%;
+            transition:0.5s linear;
+        }
+        button:hover{
+            transition:0.5s linear;
+            background:rgb(39, 39, 39);
+        }
+        .calculadora{
+            top:50%;
+            left:50%;
+            position:absolute;
+            text-align:center;
+            transform: translate(-50%, -50%);
+        }
+        @media(max-width:600px){
+            body{
+            overflow: hidden;
+            background:black;
+            height:100vh;
+        }
+        #result{
+            overflow-x: auto;
+            overflow-y:hidden ;
+            opacity:0.85;
+            text-align:right;
+            width:92vw;
+            height:22vh;
+            font-size:50pt;
+            margin:5px;
+            margin-bottom:8px;
+            color:white;
+        }
+        button{
+            margin-left:50%;
+            font-size:18pt;
+            font-weight: 500;
+            cursor:pointer;
+            color:#fff;
+            width:20vw;
+            height:11vh;
+            border:none;
+            background:gray;
+            text-align:center;
+            border-radius: 50px;
+            margin:4px;
+            transition:0.5s linear;
+        }
+        button:hover{
+            transition:0.5s linear;
+            background:rgb(39, 39, 39);
+        }
+        .calculadora{
+            top:50%;
+            left:50%;
+            position:absolute;
+            text-align:center;
+            transform: translate(-50%, -50%);
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+    <p id="result"></p>
+    <table>
+        <tr>
+            <td><button onclick="limpar()">C</button></td>
+            <td><button  onclick="apagar()">⌫</button></td>
+            <td><button onclick="inserir('%')">%</button></td>
+            <td><button onclick="inserir('/')">÷</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="inserir('7')">7</button></td>
+            <td><button onclick="inserir('8')">8</button></td>
+            <td><button onclick="inserir('9')">9</button></td>
+            <td><button onclick="inserir('*')">x</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="inserir('4')">4</button></td>
+            <td><button onclick="inserir('5')">5</button></td>
+            <td><button onclick="inserir('6')">6</button></td>
+            <td><button onclick="inserir('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="inserir('1')">1</button></td>
+            <td><button onclick="inserir('2')">2</button></td>
+            <td><button onclick="inserir('3')">3</button></td>
+            <td><button onclick="inserir('+')">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="inserir('0')">0</button></td>
+            <td><button onclick="inserir('.')">,</button></td>
+            <td><button onclick="inserir('**')">x²</button></td>
+            <td><button onclick="resulta()">=</button></td>
+        </tr>
+    </table>
+    </div>
+    <script>
+        function inserir(num){
+           var number =  document.querySelector("#result").innerHTML;
+           document.querySelector("#result").innerHTML = `${number}${num}`
+        }
+        function limpar(){
+            document.querySelector("#result").innerHTML = " ";
+        }
+        function apagar(){
+            var apaga = document.querySelector("#result").innerHTML;
+            document.querySelector("#result").innerHTML = apaga.substring(0, apaga.length -1)
+        }
+        function resulta(){
+            var apagar = document.querySelector("#result").innerHTML;
+            if(apagar){
+                document.querySelector("#result").innerHTML = eval(apagar);
+            }
+        }
+    </script>
+</body>
+</html>
